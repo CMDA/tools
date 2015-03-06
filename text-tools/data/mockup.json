@@ -1,0 +1,70 @@
+[
+	{
+		"fieldsetName": "Basics",
+		"children": [
+			{
+				"label": "font",
+				"type": "select",
+				"css": "font-family",
+				"target": "*",
+				"unit": "",
+				"value": "Helvetica",
+				"options": ["Georgia", "Helvetica", "Arial", "Times New Roman"]
+			},
+			{
+				"label": "The line-height",
+				"type": "range",
+				"css": "line-height",
+				"target": "*",
+				"unit": "",
+				"value": 0.7,
+				"options": {
+					"min": 0.5, 
+					"max": 1.6, 
+					"step": 0.1
+				}
+			},
+			{
+				"label": "Bold Headings",
+				"type": "checkbox",
+				"css": "font-weight",
+				"target": "h1, h2, h3, h4, h5, h6",
+				"unit": "",
+				"value": "normal",
+				"options": ["normal", "bold"] 
+			}
+		]
+	},
+	{
+		"fieldsetName": "General Styling",
+		"children": [
+			{
+				"label": "Body with in em",
+				"type": "range",
+				"css": "max-width",
+				"target": "*",
+				"unit": "em",
+				"value": 10,
+				"options": {
+					"min": 8, 
+					"max": 50, 
+					"step": 1
+				}
+			}
+		]
+	},
+	{
+		"fieldsetName": "Paragraph",
+		"children": [
+			{
+				"label": "Line Height",
+				"type": "radio",
+				"css": "line-height",
+				"target": "p",
+				"unit": "",
+				"value": 1,
+				"options": [1, 1.2, 1.5] 
+			}
+		]
+	}
+]
