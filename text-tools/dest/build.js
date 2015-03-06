@@ -1,3 +1,5 @@
+(function(document, undefined) {
+'use strict';
 /**
  * Een simpele Ajax functie om data op te halen
  * ik gebruik hem nu voor mockup data
@@ -341,3 +343,9 @@ function buildInitialCSS (fields) {
 		}
 	}
 }
+if (typeof define === 'function' && typeof define.amd === 'object') {
+define(function(exports) {  });
+} else {
+
+}
+}).call(this, document);
