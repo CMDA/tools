@@ -52,7 +52,6 @@ function renderItems (fields) {
 	var div = document.createElement('div');
 	for (var i = 0; i < fields.length; i++) {
 		var currentField = fields[i].built();
-		console.log(currentField);
 		if (fields[i].children.length) {
 			for (var j = 0; j < fields[i].children.length; j++) {
 				currentField.appendChild(fields[i].children[j].built());

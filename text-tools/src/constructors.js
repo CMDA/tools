@@ -32,6 +32,8 @@ function Child (options) {
 	label.appendChild(text);
 
 	this.labelNode = label;
+
+	this.jsonCopy = options; // save for later
 }
 
 Child.prototype.getStyle = function () {
@@ -43,7 +45,12 @@ Child.prototype.getStyle = function () {
 }
 
 Child.prototype.changeStyle = function (target, property, value) {
+	this.jsonCopy.value = value; // elke keer als we een style veranderen slaan we dit op
 	addCSSRule(sheet, target, property + ":" + value);
+}
+
+Child.prototype.getJSON = function () {
+	return this.jsonCopy;
 }
 
 

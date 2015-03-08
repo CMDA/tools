@@ -216,6 +216,8 @@ function Child (options) {
 	label.appendChild(text);
 
 	this.labelNode = label;
+
+	this.jsonCopy = options; // save for later
 }
 
 Child.prototype.getStyle = function () {
@@ -227,7 +229,12 @@ Child.prototype.getStyle = function () {
 }
 
 Child.prototype.changeStyle = function (target, property, value) {
+	this.jsonCopy.value = value; // elke keer als we een style veranderen slaan we dit op
 	addCSSRule(sheet, target, property + ":" + value);
+}
+
+Child.prototype.getJSON = function () {
+	return this.jsonCopy;
 }
 
 
@@ -268,6 +275,22 @@ function addCSSRule(sheet, selector, rules, index) {
   else if("addRule" in sheet) {
     sheet.addRule(selector, rules, sheet.cssRules.length);
   }
+};function exportJSON () {
+	var exportObj = [];
+	for (var i = 0; i < fields.length; i++) {
+		var fieldset = {};
+		fieldset.fieldsetName = fields[i].name
+
+		if (fields[i].children.length) {
+			fieldset.children = []
+			for (var j = 0; j < fields[i].children.length; j++) {
+				fieldset.children.push(fields[i].children[j].getJSON());
+			}
+		};
+
+		exportObj.push(fieldset);
+	}
+	return JSON.stringify(exportObj);
 };/**
  * Hier halen we de data op
  */
@@ -322,7 +345,6 @@ function renderItems (fields) {
 	var div = document.createElement('div');
 	for (var i = 0; i < fields.length; i++) {
 		var currentField = fields[i].built();
-		console.log(currentField);
 		if (fields[i].children.length) {
 			for (var j = 0; j < fields[i].children.length; j++) {
 				currentField.appendChild(fields[i].children[j].built());
@@ -344,8 +366,8 @@ function buildInitialCSS (fields) {
 	}
 }
 if (typeof define === 'function' && typeof define.amd === 'object') {
-define(function(exports) {  });
+define(function(exports) { exports.exportJSON = exportJSON; });
 } else {
-
+window.exportJSON = exportJSON;
 }
 }).call(this, document);

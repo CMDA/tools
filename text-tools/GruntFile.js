@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         separator: '\n',            
         enviroment: 'browser',     
         useStrict: true,  
-        exports: [],          
+        exports: ['exportJSON'],          
         params: {"document": "document"},      
         src: 'tmp/build.js',             
         dest: 'dest/build.js'         

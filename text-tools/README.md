@@ -1,7 +1,7 @@
 ## Todo
 
 * ~~CSS Engine~~
-* Save function
+* ~~Export function~~
 * Styling
 * Grunt build task
 * More..
